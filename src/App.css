@@ -1,25 +1,12 @@
-.site-nav {
-  height: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.nav-item-container {
-  display: flex;
-  align-items: center;
-  /* justify-content: center; */
-  flex-flow: row-reverse;
-}
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nav-item {
-  /* margin-left: 1rem;
-  margin-right: 1rem; */
+.full-height {
+  height: 100%;
 }
 
 body {
-  background: #3a3a3a;
+  /* background: #3a3a3a; */
 }
