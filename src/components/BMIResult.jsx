@@ -3,6 +3,10 @@ import { BMIContext } from '../context/BMIContext';
 import sadHeart from '../assets/imgs/hearts/sad.svg';
 import overweight from '../assets/imgs/hearts/oh-no.svg';
 import normal from '../assets/imgs/hearts/happy.svg';
+import overweightScale from '../assets/imgs/overweight.svg';
+import obeseScale from '../assets/imgs/obese.svg';
+import normalScale from '../assets/imgs/normal.svg';
+import underweightScale from '../assets/imgs/underweight.svg';
 
 import { useHistory } from 'react-router-dom';
 
@@ -12,43 +16,55 @@ function BMIResult() {
   const h = useHistory();
 
   const obesityText = (
-    <p>
-      You are <span style={{ color: 'red' }}>AT HIGH RISK </span>
-      for obesity-related diseases
-    </p>
+    <div>
+      <img src={obeseScale} alt='obese-scale' width='450px'></img>
+      <p>
+        You are <span style={{ color: 'red' }}>AT HIGH RISK </span>
+        for obesity-related diseases
+      </p>
+    </div>
   );
 
   const normalText = (
-    <p>
-      You are <span style={{ color: 'green' }}>AT LOW RISK </span>
-      for obesity-related diseases
-    </p>
+    <div>
+      <img src={normalScale} alt='normal-scale' width='450px'></img>
+      <p>
+        You are <span style={{ color: 'green' }}>AT LOW RISK </span>
+        for obesity-related diseases
+      </p>
+    </div>
   );
 
   const overweightText = (
-    <p>
-      You are <span style={{ color: 'orange' }}>AT MODERATE RISK </span>
-      for obesity-related diseases
-    </p>
+    <div>
+      <img src={overweightScale} alt='overweight-scale' width='450px'></img>
+      <p>
+        You are <span style={{ color: 'orange' }}>AT MODERATE RISK </span>
+        for obesity-related diseases
+      </p>
+    </div>
   );
 
   const underweightText = (
-    <p>
-      You are <span>AT LOW RISK</span> for obesity-related diseases but at risk of other clinical problems
-    </p>
+    <div>
+      <img src={underweightScale} alt='underweight-scale' width='450px'></img>
+      <p>
+        You are <span>AT LOW RISK</span> for obesity-related diseases but at risk of other clinical problems
+      </p>
+    </div>
   );
 
   function getResultText(score) {
-    if (score >= 30) {
+    if (score >= 22) {
       //Obese
       return obesityText;
-    } else if (score >= 25 && score < 30) {
+    } else if (score >= 18 && score < 22) {
       //Overweight
       return overweightText;
-    } else if (score >= 18.5 && score < 25) {
+    } else if (score >= 13.7 && score < 18) {
       //Normal or Healthy Weight
       return normalText;
-    } else if (score < 18.5) {
+    } else if (score < 13.7) {
       //Underweight
       return underweightText;
     }
@@ -60,16 +76,16 @@ function BMIResult() {
   }
 
   function getPic(score) {
-    if (score >= 30) {
+    if (score >= 22) {
       //Obese
       return sadHeart;
-    } else if (score >= 25 && score < 30) {
+    } else if (score >= 18 && score < 22) {
       //Overweight
       return overweight;
-    } else if (score >= 18.5 && score < 25) {
+    } else if (score >= 13.7 && score < 18) {
       //Normal or Healthy Weight
       return normal;
-    } else if (score < 18.5) {
+    } else if (score < 13.7) {
       //Underweight
       return sadHeart;
     }
