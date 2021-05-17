@@ -28,7 +28,11 @@ function BMIHeight() {
               required
               type='number'
               min='10'
-              onChange={(e) => (context.height = Math.round(e.target.value, 1))}
+              maxLength='3'
+              onChange={(e) => {
+                context.height = parseInt(e.target.value.slice(0, 3));
+                e.target.value = context.height;
+              }}
             />
           </div>
 

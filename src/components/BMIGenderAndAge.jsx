@@ -26,38 +26,43 @@ function BMIGenderAndAge() {
       {/* modal start */}
       <div
         ref={modelRef}
-        class='modal fade'
+        className='modal fade'
         id='staticBackdrop'
         data-bs-backdrop='static'
         data-bs-keyboard='false'
-        tabindex='-1'
+        tabIndex='-1'
         aria-labelledby='staticBackdropLabel'
         aria-hidden='true'
       >
-        <div class='modal-dialog'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title' id='staticBackdropLabel'>
+        <div className='modal-dialog'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h5 className='modal-title' id='staticBackdropLabel'>
                 Note to parent:
               </h5>
             </div>
-            <div class='modal-body'>
-              <p>
-                This calculator provides body mass index (BMI) for children ages 8 through 10 years. Please keep in mind
-                that this BMI calculator is not meant to serve as a source of clinical guidance and is not intended to
-                be a substitute for professional medical advice. Because BMI is based on weight and height, it is only
-                an indicator of body fatness. Individuals with the same BMI may have different amounts of body fat.
+            <div className='modal-body'>
+              <p style={{ textAlign: 'justify' }}>
+                This calculator provides body mass index (BMI) for children ages 8 through 10 years.
+                Please keep in mind that this BMI calculator is not meant to serve as a source of
+                clinical guidance and is not intended to be a substitute for professional medical
+                advice. Because BMI is based on weight and height, it is only an indicator of body
+                fatness. Individuals with the same BMI may have different amounts of body fat.
               </p>
             </div>
-            <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary'>
+            <div className='modal-footer'>
+              <a
+                href='https://www.health.harvard.edu/blog/how-useful-is-the-body-mass-index-bmi-201603309339'
+                className='btn btn-secondary'
+                target='_blank'
+              >
                 No, I am not sure
-              </button>
+              </a>
               <button
                 type='button'
-                class='btn btn-primary'
+                className='btn btn-primary'
                 // data-bs-dismiss='modal'
-                onClick={() => hideModal()}
+                onClick={hideModal}
               >
                 Understood
               </button>
@@ -74,8 +79,8 @@ function BMIGenderAndAge() {
           <h3>BMI stands for Body Mass Index</h3>
           <p>It tells you how fit you are!</p>
           <p>
-            You can measure your body mass index using your weight and height. You may ask a parent to help! Go ahead,
-            Put in your measurements bellow to find out you BMI!
+            You can measure your body mass index using your weight and height. You may ask a parent
+            to help! Go ahead, Put in your measurements bellow to find out you BMI!
           </p>
         </div>
 
@@ -93,9 +98,13 @@ function BMIGenderAndAge() {
               className='form-control'
               required
               type='number'
-              min='3'
-              max='120'
-              onChange={(e) => (ctx.age = Math.round(e.target.value))}
+              min='8'
+              max='10'
+              maxLength='2'
+              onChange={(e) => {
+                ctx.age = parseInt(e.target.value.slice(0, 2))
+                e.target.value = ctx.age
+              }}
             ></input>
           </div>
           {/* Gender */}

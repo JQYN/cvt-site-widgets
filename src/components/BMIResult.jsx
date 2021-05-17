@@ -3,10 +3,10 @@ import { BMIContext } from '../context/BMIContext';
 import sadHeart from '../assets/imgs/hearts/sad.svg';
 import overweight from '../assets/imgs/hearts/oh-no.svg';
 import normal from '../assets/imgs/hearts/happy.svg';
-import overweightScale from '../assets/imgs/overweight.svg';
-import obeseScale from '../assets/imgs/obese.svg';
-import normalScale from '../assets/imgs/normal.svg';
-import underweightScale from '../assets/imgs/underweight.svg';
+import overweightScale from '../assets/imgs/Overweight.png';
+import obeseScale from '../assets/imgs/Obese.png';
+import normalScale from '../assets/imgs/Normal.png';
+import underweightScale from '../assets/imgs/Underweight.png';
 
 import { useHistory } from 'react-router-dom';
 
@@ -19,8 +19,10 @@ function BMIResult() {
     <div>
       <img src={obeseScale} alt='obese-scale' width='450px'></img>
       <p>
-        You are <span style={{ color: 'red' }}>AT HIGH RISK </span>
-        for obesity-related diseases
+        Things are not looking too bright here! You should talk to your parents about this. You seem
+        to weigh more than 95% of people in your age group, this can be dangerous if not addressed
+        in time. Ask your parents to contact your family doctor and seek advice. It’s never too late
+        to get fit!
       </p>
     </div>
   );
@@ -29,8 +31,8 @@ function BMIResult() {
     <div>
       <img src={normalScale} alt='normal-scale' width='450px'></img>
       <p>
-        You are <span style={{ color: 'green' }}>AT LOW RISK </span>
-        for obesity-related diseases
+        Hooray! You seem to be healthy and weigh very well for your age group. Keep eating those
+        leafy greens and doing those exercises and you’ll grow up to be a strong person.
       </p>
     </div>
   );
@@ -39,8 +41,9 @@ function BMIResult() {
     <div>
       <img src={overweightScale} alt='overweight-scale' width='450px'></img>
       <p>
-        You are <span style={{ color: 'orange' }}>AT MODERATE RISK </span>
-        for obesity-related diseases
+        Shoot! You seem to love food a little more than people around you, and it shows. Don’t worry
+        though with adding the right amount of exercises and healthy foods to your diet, you can run
+        all you want and not get tired!
       </p>
     </div>
   );
@@ -49,7 +52,8 @@ function BMIResult() {
     <div>
       <img src={underweightScale} alt='underweight-scale' width='450px'></img>
       <p>
-        You are <span>AT LOW RISK</span> for obesity-related diseases but at risk of other clinical problems
+        Oh No! Looks like you’re a little Underweight for people of your age. Don’t worry, with a
+        little modification in your diet, you can grow up from this and be stronger than before!
       </p>
     </div>
   );
@@ -91,24 +95,39 @@ function BMIResult() {
     }
   }
 
-  function generateLink(weight, height, age, gender) {
-    gender = gender === 'boy' ? 'm' : 'f';
-    return `https://www.cdc.gov/healthyweight/bmi/result.html?&method=metric&gender=${gender}&age_y=${age}&age_m=0&hcm=${height}&wkg=${weight}`;
-  }
+  // function generateLink(weight, height, age, gender) {
+  //   gender = gender === 'boy' ? 'm' : 'f';
+  //   return `https://www.cdc.gov/healthyweight/bmi/result.html?&method=metric&gender=${gender}&age_y=${age}&age_m=0&hcm=${height}&wkg=${weight}`;
+  // }
 
   return (
     <div className='cal-container'>
       <div className=''>
-        <img src={getPic(score)} alt='result-carton' className='img-fluid' width='250' height='250' />
+        <img
+          src={getPic(score)}
+          alt='result-carton'
+          className='img-fluid'
+          width='250'
+          height='250'
+        />
       </div>
       <div className='w-75'>
         <h3>My BMI is {score}</h3>
         {getResultText(score)}
-        <a href={generateLink(weight, height, age, gender)} target='_blank' rel='noreferrer' className='text-center'>
+        <a
+          href='https://www.cdc.gov/healthyweight/assessing/bmi/childrens_bmi/about_childrens_bmi.html'
+          target='_blank'
+          rel='noreferrer'
+          className='text-center'
+        >
           Parents: Click here to know more
         </a>
         <div className='mb-3 mt-3'>
-          <button className='btn btn-primary' type='button' onClick={() => h.push('/bmi/gender-age')}>
+          <button
+            className='btn btn-primary'
+            type='button'
+            onClick={() => h.push('/bmi/gender-age')}
+          >
             Test Again
           </button>
         </div>
